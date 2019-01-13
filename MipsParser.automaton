@@ -1,0 +1,833 @@
+State 0:
+prog' -> . prog [ # ]
+-- On SET shift to state 1
+-- On PRINT shift to state 36
+-- On IF shift to state 38
+-- On stmts shift to state 49
+-- On stmt shift to state 47
+-- On prog shift to state 51
+
+State 1:
+stmt -> SET . IDENT EQ expr [ SMC EOF ELSE DONE ]
+-- On IDENT shift to state 2
+
+State 2:
+stmt -> SET IDENT . EQ expr [ SMC EOF ELSE DONE ]
+-- On EQ shift to state 3
+
+State 3:
+stmt -> SET IDENT EQ . expr [ SMC EOF ELSE DONE ]
+-- On TRUE shift to state 4
+-- On MINUS shift to state 5
+-- On LP shift to state 6
+-- On INT shift to state 7
+-- On IDENT shift to state 8
+-- On FLOAT shift to state 9
+-- On FALSE shift to state 10
+-- On expr shift to state 35
+-- On cst shift to state 14
+
+State 4:
+cst -> TRUE . [ TIMES THEN SMC SMALLER RP PLUS MINUS EQUALS EQSMALL EQBIG EOF ELSE DONE DIV DIFFERS BIGGER ]
+-- On TIMES reduce production cst -> TRUE 
+-- On THEN reduce production cst -> TRUE 
+-- On SMC reduce production cst -> TRUE 
+-- On SMALLER reduce production cst -> TRUE 
+-- On RP reduce production cst -> TRUE 
+-- On PLUS reduce production cst -> TRUE 
+-- On MINUS reduce production cst -> TRUE 
+-- On EQUALS reduce production cst -> TRUE 
+-- On EQSMALL reduce production cst -> TRUE 
+-- On EQBIG reduce production cst -> TRUE 
+-- On EOF reduce production cst -> TRUE 
+-- On ELSE reduce production cst -> TRUE 
+-- On DONE reduce production cst -> TRUE 
+-- On DIV reduce production cst -> TRUE 
+-- On DIFFERS reduce production cst -> TRUE 
+-- On BIGGER reduce production cst -> TRUE 
+
+State 5:
+expr -> MINUS . expr [ TIMES THEN SMC SMALLER RP PLUS MINUS EQUALS EQSMALL EQBIG EOF ELSE DONE DIV DIFFERS BIGGER ]
+-- On TRUE shift to state 4
+-- On MINUS shift to state 5
+-- On LP shift to state 6
+-- On INT shift to state 7
+-- On IDENT shift to state 8
+-- On FLOAT shift to state 9
+-- On FALSE shift to state 10
+-- On expr shift to state 34
+-- On cst shift to state 14
+
+State 6:
+expr -> LP . expr RP [ TIMES THEN SMC SMALLER RP PLUS MINUS EQUALS EQSMALL EQBIG EOF ELSE DONE DIV DIFFERS BIGGER ]
+-- On TRUE shift to state 4
+-- On MINUS shift to state 5
+-- On LP shift to state 6
+-- On INT shift to state 7
+-- On IDENT shift to state 8
+-- On FLOAT shift to state 9
+-- On FALSE shift to state 10
+-- On expr shift to state 11
+-- On cst shift to state 14
+
+State 7:
+cst -> INT . [ TIMES THEN SMC SMALLER RP PLUS MINUS EQUALS EQSMALL EQBIG EOF ELSE DONE DIV DIFFERS BIGGER ]
+-- On TIMES reduce production cst -> INT 
+-- On THEN reduce production cst -> INT 
+-- On SMC reduce production cst -> INT 
+-- On SMALLER reduce production cst -> INT 
+-- On RP reduce production cst -> INT 
+-- On PLUS reduce production cst -> INT 
+-- On MINUS reduce production cst -> INT 
+-- On EQUALS reduce production cst -> INT 
+-- On EQSMALL reduce production cst -> INT 
+-- On EQBIG reduce production cst -> INT 
+-- On EOF reduce production cst -> INT 
+-- On ELSE reduce production cst -> INT 
+-- On DONE reduce production cst -> INT 
+-- On DIV reduce production cst -> INT 
+-- On DIFFERS reduce production cst -> INT 
+-- On BIGGER reduce production cst -> INT 
+
+State 8:
+expr -> IDENT . [ TIMES THEN SMC SMALLER RP PLUS MINUS EQUALS EQSMALL EQBIG EOF ELSE DONE DIV DIFFERS BIGGER ]
+-- On TIMES reduce production expr -> IDENT 
+-- On THEN reduce production expr -> IDENT 
+-- On SMC reduce production expr -> IDENT 
+-- On SMALLER reduce production expr -> IDENT 
+-- On RP reduce production expr -> IDENT 
+-- On PLUS reduce production expr -> IDENT 
+-- On MINUS reduce production expr -> IDENT 
+-- On EQUALS reduce production expr -> IDENT 
+-- On EQSMALL reduce production expr -> IDENT 
+-- On EQBIG reduce production expr -> IDENT 
+-- On EOF reduce production expr -> IDENT 
+-- On ELSE reduce production expr -> IDENT 
+-- On DONE reduce production expr -> IDENT 
+-- On DIV reduce production expr -> IDENT 
+-- On DIFFERS reduce production expr -> IDENT 
+-- On BIGGER reduce production expr -> IDENT 
+
+State 9:
+cst -> FLOAT . [ TIMES THEN SMC SMALLER RP PLUS MINUS EQUALS EQSMALL EQBIG EOF ELSE DONE DIV DIFFERS BIGGER ]
+-- On TIMES reduce production cst -> FLOAT 
+-- On THEN reduce production cst -> FLOAT 
+-- On SMC reduce production cst -> FLOAT 
+-- On SMALLER reduce production cst -> FLOAT 
+-- On RP reduce production cst -> FLOAT 
+-- On PLUS reduce production cst -> FLOAT 
+-- On MINUS reduce production cst -> FLOAT 
+-- On EQUALS reduce production cst -> FLOAT 
+-- On EQSMALL reduce production cst -> FLOAT 
+-- On EQBIG reduce production cst -> FLOAT 
+-- On EOF reduce production cst -> FLOAT 
+-- On ELSE reduce production cst -> FLOAT 
+-- On DONE reduce production cst -> FLOAT 
+-- On DIV reduce production cst -> FLOAT 
+-- On DIFFERS reduce production cst -> FLOAT 
+-- On BIGGER reduce production cst -> FLOAT 
+
+State 10:
+cst -> FALSE . [ TIMES THEN SMC SMALLER RP PLUS MINUS EQUALS EQSMALL EQBIG EOF ELSE DONE DIV DIFFERS BIGGER ]
+-- On TIMES reduce production cst -> FALSE 
+-- On THEN reduce production cst -> FALSE 
+-- On SMC reduce production cst -> FALSE 
+-- On SMALLER reduce production cst -> FALSE 
+-- On RP reduce production cst -> FALSE 
+-- On PLUS reduce production cst -> FALSE 
+-- On MINUS reduce production cst -> FALSE 
+-- On EQUALS reduce production cst -> FALSE 
+-- On EQSMALL reduce production cst -> FALSE 
+-- On EQBIG reduce production cst -> FALSE 
+-- On EOF reduce production cst -> FALSE 
+-- On ELSE reduce production cst -> FALSE 
+-- On DONE reduce production cst -> FALSE 
+-- On DIV reduce production cst -> FALSE 
+-- On DIFFERS reduce production cst -> FALSE 
+-- On BIGGER reduce production cst -> FALSE 
+
+State 11:
+expr -> expr . PLUS expr [ TIMES SMALLER RP PLUS MINUS EQUALS EQSMALL EQBIG DIV DIFFERS BIGGER ]
+expr -> expr . MINUS expr [ TIMES SMALLER RP PLUS MINUS EQUALS EQSMALL EQBIG DIV DIFFERS BIGGER ]
+expr -> expr . TIMES expr [ TIMES SMALLER RP PLUS MINUS EQUALS EQSMALL EQBIG DIV DIFFERS BIGGER ]
+expr -> expr . DIV expr [ TIMES SMALLER RP PLUS MINUS EQUALS EQSMALL EQBIG DIV DIFFERS BIGGER ]
+expr -> expr . BIGGER expr [ TIMES SMALLER RP PLUS MINUS EQUALS EQSMALL EQBIG DIV DIFFERS BIGGER ]
+expr -> expr . SMALLER expr [ TIMES SMALLER RP PLUS MINUS EQUALS EQSMALL EQBIG DIV DIFFERS BIGGER ]
+expr -> expr . EQSMALL expr [ TIMES SMALLER RP PLUS MINUS EQUALS EQSMALL EQBIG DIV DIFFERS BIGGER ]
+expr -> expr . EQBIG expr [ TIMES SMALLER RP PLUS MINUS EQUALS EQSMALL EQBIG DIV DIFFERS BIGGER ]
+expr -> expr . EQUALS expr [ TIMES SMALLER RP PLUS MINUS EQUALS EQSMALL EQBIG DIV DIFFERS BIGGER ]
+expr -> expr . DIFFERS expr [ TIMES SMALLER RP PLUS MINUS EQUALS EQSMALL EQBIG DIV DIFFERS BIGGER ]
+expr -> LP expr . RP [ TIMES THEN SMC SMALLER RP PLUS MINUS EQUALS EQSMALL EQBIG EOF ELSE DONE DIV DIFFERS BIGGER ]
+-- On TIMES shift to state 12
+-- On SMALLER shift to state 15
+-- On RP shift to state 23
+-- On PLUS shift to state 17
+-- On MINUS shift to state 21
+-- On EQUALS shift to state 24
+-- On EQSMALL shift to state 26
+-- On EQBIG shift to state 28
+-- On DIV shift to state 19
+-- On DIFFERS shift to state 30
+-- On BIGGER shift to state 32
+
+State 12:
+expr -> expr TIMES . expr [ TIMES THEN SMC SMALLER RP PLUS MINUS EQUALS EQSMALL EQBIG EOF ELSE DONE DIV DIFFERS BIGGER ]
+-- On TRUE shift to state 4
+-- On MINUS shift to state 5
+-- On LP shift to state 6
+-- On INT shift to state 7
+-- On IDENT shift to state 8
+-- On FLOAT shift to state 9
+-- On FALSE shift to state 10
+-- On expr shift to state 13
+-- On cst shift to state 14
+
+State 13:
+expr -> expr . PLUS expr [ TIMES THEN SMC SMALLER RP PLUS MINUS EQUALS EQSMALL EQBIG EOF ELSE DONE DIV DIFFERS BIGGER ]
+expr -> expr . MINUS expr [ TIMES THEN SMC SMALLER RP PLUS MINUS EQUALS EQSMALL EQBIG EOF ELSE DONE DIV DIFFERS BIGGER ]
+expr -> expr . TIMES expr [ TIMES THEN SMC SMALLER RP PLUS MINUS EQUALS EQSMALL EQBIG EOF ELSE DONE DIV DIFFERS BIGGER ]
+expr -> expr TIMES expr . [ TIMES THEN SMC SMALLER RP PLUS MINUS EQUALS EQSMALL EQBIG EOF ELSE DONE DIV DIFFERS BIGGER ]
+expr -> expr . DIV expr [ TIMES THEN SMC SMALLER RP PLUS MINUS EQUALS EQSMALL EQBIG EOF ELSE DONE DIV DIFFERS BIGGER ]
+expr -> expr . BIGGER expr [ TIMES THEN SMC SMALLER RP PLUS MINUS EQUALS EQSMALL EQBIG EOF ELSE DONE DIV DIFFERS BIGGER ]
+expr -> expr . SMALLER expr [ TIMES THEN SMC SMALLER RP PLUS MINUS EQUALS EQSMALL EQBIG EOF ELSE DONE DIV DIFFERS BIGGER ]
+expr -> expr . EQSMALL expr [ TIMES THEN SMC SMALLER RP PLUS MINUS EQUALS EQSMALL EQBIG EOF ELSE DONE DIV DIFFERS BIGGER ]
+expr -> expr . EQBIG expr [ TIMES THEN SMC SMALLER RP PLUS MINUS EQUALS EQSMALL EQBIG EOF ELSE DONE DIV DIFFERS BIGGER ]
+expr -> expr . EQUALS expr [ TIMES THEN SMC SMALLER RP PLUS MINUS EQUALS EQSMALL EQBIG EOF ELSE DONE DIV DIFFERS BIGGER ]
+expr -> expr . DIFFERS expr [ TIMES THEN SMC SMALLER RP PLUS MINUS EQUALS EQSMALL EQBIG EOF ELSE DONE DIV DIFFERS BIGGER ]
+-- On TIMES reduce production expr -> expr TIMES expr 
+-- On THEN reduce production expr -> expr TIMES expr 
+-- On SMC reduce production expr -> expr TIMES expr 
+-- On SMALLER reduce production expr -> expr TIMES expr 
+-- On RP reduce production expr -> expr TIMES expr 
+-- On PLUS reduce production expr -> expr TIMES expr 
+-- On MINUS reduce production expr -> expr TIMES expr 
+-- On EQUALS reduce production expr -> expr TIMES expr 
+-- On EQSMALL reduce production expr -> expr TIMES expr 
+-- On EQBIG reduce production expr -> expr TIMES expr 
+-- On EOF reduce production expr -> expr TIMES expr 
+-- On ELSE reduce production expr -> expr TIMES expr 
+-- On DONE reduce production expr -> expr TIMES expr 
+-- On DIV reduce production expr -> expr TIMES expr 
+-- On DIFFERS reduce production expr -> expr TIMES expr 
+-- On BIGGER reduce production expr -> expr TIMES expr 
+
+State 14:
+expr -> cst . [ TIMES THEN SMC SMALLER RP PLUS MINUS EQUALS EQSMALL EQBIG EOF ELSE DONE DIV DIFFERS BIGGER ]
+-- On TIMES reduce production expr -> cst 
+-- On THEN reduce production expr -> cst 
+-- On SMC reduce production expr -> cst 
+-- On SMALLER reduce production expr -> cst 
+-- On RP reduce production expr -> cst 
+-- On PLUS reduce production expr -> cst 
+-- On MINUS reduce production expr -> cst 
+-- On EQUALS reduce production expr -> cst 
+-- On EQSMALL reduce production expr -> cst 
+-- On EQBIG reduce production expr -> cst 
+-- On EOF reduce production expr -> cst 
+-- On ELSE reduce production expr -> cst 
+-- On DONE reduce production expr -> cst 
+-- On DIV reduce production expr -> cst 
+-- On DIFFERS reduce production expr -> cst 
+-- On BIGGER reduce production expr -> cst 
+
+State 15:
+expr -> expr SMALLER . expr [ TIMES THEN SMC SMALLER RP PLUS MINUS EQUALS EQSMALL EQBIG EOF ELSE DONE DIV DIFFERS BIGGER ]
+-- On TRUE shift to state 4
+-- On MINUS shift to state 5
+-- On LP shift to state 6
+-- On INT shift to state 7
+-- On IDENT shift to state 8
+-- On FLOAT shift to state 9
+-- On FALSE shift to state 10
+-- On expr shift to state 16
+-- On cst shift to state 14
+
+State 16:
+expr -> expr . PLUS expr [ TIMES THEN SMC SMALLER RP PLUS MINUS EQUALS EQSMALL EQBIG EOF ELSE DONE DIV DIFFERS BIGGER ]
+expr -> expr . MINUS expr [ TIMES THEN SMC SMALLER RP PLUS MINUS EQUALS EQSMALL EQBIG EOF ELSE DONE DIV DIFFERS BIGGER ]
+expr -> expr . TIMES expr [ TIMES THEN SMC SMALLER RP PLUS MINUS EQUALS EQSMALL EQBIG EOF ELSE DONE DIV DIFFERS BIGGER ]
+expr -> expr . DIV expr [ TIMES THEN SMC SMALLER RP PLUS MINUS EQUALS EQSMALL EQBIG EOF ELSE DONE DIV DIFFERS BIGGER ]
+expr -> expr . BIGGER expr [ TIMES THEN SMC SMALLER RP PLUS MINUS EQUALS EQSMALL EQBIG EOF ELSE DONE DIV DIFFERS BIGGER ]
+expr -> expr . SMALLER expr [ TIMES THEN SMC SMALLER RP PLUS MINUS EQUALS EQSMALL EQBIG EOF ELSE DONE DIV DIFFERS BIGGER ]
+expr -> expr SMALLER expr . [ TIMES THEN SMC SMALLER RP PLUS MINUS EQUALS EQSMALL EQBIG EOF ELSE DONE DIV DIFFERS BIGGER ]
+expr -> expr . EQSMALL expr [ TIMES THEN SMC SMALLER RP PLUS MINUS EQUALS EQSMALL EQBIG EOF ELSE DONE DIV DIFFERS BIGGER ]
+expr -> expr . EQBIG expr [ TIMES THEN SMC SMALLER RP PLUS MINUS EQUALS EQSMALL EQBIG EOF ELSE DONE DIV DIFFERS BIGGER ]
+expr -> expr . EQUALS expr [ TIMES THEN SMC SMALLER RP PLUS MINUS EQUALS EQSMALL EQBIG EOF ELSE DONE DIV DIFFERS BIGGER ]
+expr -> expr . DIFFERS expr [ TIMES THEN SMC SMALLER RP PLUS MINUS EQUALS EQSMALL EQBIG EOF ELSE DONE DIV DIFFERS BIGGER ]
+-- On TIMES shift to state 12
+-- On PLUS shift to state 17
+-- On MINUS shift to state 21
+-- On DIV shift to state 19
+-- On THEN reduce production expr -> expr SMALLER expr 
+-- On SMC reduce production expr -> expr SMALLER expr 
+-- On SMALLER reduce production expr -> expr SMALLER expr 
+-- On RP reduce production expr -> expr SMALLER expr 
+-- On EQUALS reduce production expr -> expr SMALLER expr 
+-- On EQSMALL reduce production expr -> expr SMALLER expr 
+-- On EQBIG reduce production expr -> expr SMALLER expr 
+-- On EOF reduce production expr -> expr SMALLER expr 
+-- On ELSE reduce production expr -> expr SMALLER expr 
+-- On DONE reduce production expr -> expr SMALLER expr 
+-- On DIFFERS reduce production expr -> expr SMALLER expr 
+-- On BIGGER reduce production expr -> expr SMALLER expr 
+
+State 17:
+expr -> expr PLUS . expr [ TIMES THEN SMC SMALLER RP PLUS MINUS EQUALS EQSMALL EQBIG EOF ELSE DONE DIV DIFFERS BIGGER ]
+-- On TRUE shift to state 4
+-- On MINUS shift to state 5
+-- On LP shift to state 6
+-- On INT shift to state 7
+-- On IDENT shift to state 8
+-- On FLOAT shift to state 9
+-- On FALSE shift to state 10
+-- On expr shift to state 18
+-- On cst shift to state 14
+
+State 18:
+expr -> expr . PLUS expr [ TIMES THEN SMC SMALLER RP PLUS MINUS EQUALS EQSMALL EQBIG EOF ELSE DONE DIV DIFFERS BIGGER ]
+expr -> expr PLUS expr . [ TIMES THEN SMC SMALLER RP PLUS MINUS EQUALS EQSMALL EQBIG EOF ELSE DONE DIV DIFFERS BIGGER ]
+expr -> expr . MINUS expr [ TIMES THEN SMC SMALLER RP PLUS MINUS EQUALS EQSMALL EQBIG EOF ELSE DONE DIV DIFFERS BIGGER ]
+expr -> expr . TIMES expr [ TIMES THEN SMC SMALLER RP PLUS MINUS EQUALS EQSMALL EQBIG EOF ELSE DONE DIV DIFFERS BIGGER ]
+expr -> expr . DIV expr [ TIMES THEN SMC SMALLER RP PLUS MINUS EQUALS EQSMALL EQBIG EOF ELSE DONE DIV DIFFERS BIGGER ]
+expr -> expr . BIGGER expr [ TIMES THEN SMC SMALLER RP PLUS MINUS EQUALS EQSMALL EQBIG EOF ELSE DONE DIV DIFFERS BIGGER ]
+expr -> expr . SMALLER expr [ TIMES THEN SMC SMALLER RP PLUS MINUS EQUALS EQSMALL EQBIG EOF ELSE DONE DIV DIFFERS BIGGER ]
+expr -> expr . EQSMALL expr [ TIMES THEN SMC SMALLER RP PLUS MINUS EQUALS EQSMALL EQBIG EOF ELSE DONE DIV DIFFERS BIGGER ]
+expr -> expr . EQBIG expr [ TIMES THEN SMC SMALLER RP PLUS MINUS EQUALS EQSMALL EQBIG EOF ELSE DONE DIV DIFFERS BIGGER ]
+expr -> expr . EQUALS expr [ TIMES THEN SMC SMALLER RP PLUS MINUS EQUALS EQSMALL EQBIG EOF ELSE DONE DIV DIFFERS BIGGER ]
+expr -> expr . DIFFERS expr [ TIMES THEN SMC SMALLER RP PLUS MINUS EQUALS EQSMALL EQBIG EOF ELSE DONE DIV DIFFERS BIGGER ]
+-- On TIMES shift to state 12
+-- On DIV shift to state 19
+-- On THEN reduce production expr -> expr PLUS expr 
+-- On SMC reduce production expr -> expr PLUS expr 
+-- On SMALLER reduce production expr -> expr PLUS expr 
+-- On RP reduce production expr -> expr PLUS expr 
+-- On PLUS reduce production expr -> expr PLUS expr 
+-- On MINUS reduce production expr -> expr PLUS expr 
+-- On EQUALS reduce production expr -> expr PLUS expr 
+-- On EQSMALL reduce production expr -> expr PLUS expr 
+-- On EQBIG reduce production expr -> expr PLUS expr 
+-- On EOF reduce production expr -> expr PLUS expr 
+-- On ELSE reduce production expr -> expr PLUS expr 
+-- On DONE reduce production expr -> expr PLUS expr 
+-- On DIFFERS reduce production expr -> expr PLUS expr 
+-- On BIGGER reduce production expr -> expr PLUS expr 
+
+State 19:
+expr -> expr DIV . expr [ TIMES THEN SMC SMALLER RP PLUS MINUS EQUALS EQSMALL EQBIG EOF ELSE DONE DIV DIFFERS BIGGER ]
+-- On TRUE shift to state 4
+-- On MINUS shift to state 5
+-- On LP shift to state 6
+-- On INT shift to state 7
+-- On IDENT shift to state 8
+-- On FLOAT shift to state 9
+-- On FALSE shift to state 10
+-- On expr shift to state 20
+-- On cst shift to state 14
+
+State 20:
+expr -> expr . PLUS expr [ TIMES THEN SMC SMALLER RP PLUS MINUS EQUALS EQSMALL EQBIG EOF ELSE DONE DIV DIFFERS BIGGER ]
+expr -> expr . MINUS expr [ TIMES THEN SMC SMALLER RP PLUS MINUS EQUALS EQSMALL EQBIG EOF ELSE DONE DIV DIFFERS BIGGER ]
+expr -> expr . TIMES expr [ TIMES THEN SMC SMALLER RP PLUS MINUS EQUALS EQSMALL EQBIG EOF ELSE DONE DIV DIFFERS BIGGER ]
+expr -> expr . DIV expr [ TIMES THEN SMC SMALLER RP PLUS MINUS EQUALS EQSMALL EQBIG EOF ELSE DONE DIV DIFFERS BIGGER ]
+expr -> expr DIV expr . [ TIMES THEN SMC SMALLER RP PLUS MINUS EQUALS EQSMALL EQBIG EOF ELSE DONE DIV DIFFERS BIGGER ]
+expr -> expr . BIGGER expr [ TIMES THEN SMC SMALLER RP PLUS MINUS EQUALS EQSMALL EQBIG EOF ELSE DONE DIV DIFFERS BIGGER ]
+expr -> expr . SMALLER expr [ TIMES THEN SMC SMALLER RP PLUS MINUS EQUALS EQSMALL EQBIG EOF ELSE DONE DIV DIFFERS BIGGER ]
+expr -> expr . EQSMALL expr [ TIMES THEN SMC SMALLER RP PLUS MINUS EQUALS EQSMALL EQBIG EOF ELSE DONE DIV DIFFERS BIGGER ]
+expr -> expr . EQBIG expr [ TIMES THEN SMC SMALLER RP PLUS MINUS EQUALS EQSMALL EQBIG EOF ELSE DONE DIV DIFFERS BIGGER ]
+expr -> expr . EQUALS expr [ TIMES THEN SMC SMALLER RP PLUS MINUS EQUALS EQSMALL EQBIG EOF ELSE DONE DIV DIFFERS BIGGER ]
+expr -> expr . DIFFERS expr [ TIMES THEN SMC SMALLER RP PLUS MINUS EQUALS EQSMALL EQBIG EOF ELSE DONE DIV DIFFERS BIGGER ]
+-- On TIMES reduce production expr -> expr DIV expr 
+-- On THEN reduce production expr -> expr DIV expr 
+-- On SMC reduce production expr -> expr DIV expr 
+-- On SMALLER reduce production expr -> expr DIV expr 
+-- On RP reduce production expr -> expr DIV expr 
+-- On PLUS reduce production expr -> expr DIV expr 
+-- On MINUS reduce production expr -> expr DIV expr 
+-- On EQUALS reduce production expr -> expr DIV expr 
+-- On EQSMALL reduce production expr -> expr DIV expr 
+-- On EQBIG reduce production expr -> expr DIV expr 
+-- On EOF reduce production expr -> expr DIV expr 
+-- On ELSE reduce production expr -> expr DIV expr 
+-- On DONE reduce production expr -> expr DIV expr 
+-- On DIV reduce production expr -> expr DIV expr 
+-- On DIFFERS reduce production expr -> expr DIV expr 
+-- On BIGGER reduce production expr -> expr DIV expr 
+
+State 21:
+expr -> expr MINUS . expr [ TIMES THEN SMC SMALLER RP PLUS MINUS EQUALS EQSMALL EQBIG EOF ELSE DONE DIV DIFFERS BIGGER ]
+-- On TRUE shift to state 4
+-- On MINUS shift to state 5
+-- On LP shift to state 6
+-- On INT shift to state 7
+-- On IDENT shift to state 8
+-- On FLOAT shift to state 9
+-- On FALSE shift to state 10
+-- On expr shift to state 22
+-- On cst shift to state 14
+
+State 22:
+expr -> expr . PLUS expr [ TIMES THEN SMC SMALLER RP PLUS MINUS EQUALS EQSMALL EQBIG EOF ELSE DONE DIV DIFFERS BIGGER ]
+expr -> expr . MINUS expr [ TIMES THEN SMC SMALLER RP PLUS MINUS EQUALS EQSMALL EQBIG EOF ELSE DONE DIV DIFFERS BIGGER ]
+expr -> expr MINUS expr . [ TIMES THEN SMC SMALLER RP PLUS MINUS EQUALS EQSMALL EQBIG EOF ELSE DONE DIV DIFFERS BIGGER ]
+expr -> expr . TIMES expr [ TIMES THEN SMC SMALLER RP PLUS MINUS EQUALS EQSMALL EQBIG EOF ELSE DONE DIV DIFFERS BIGGER ]
+expr -> expr . DIV expr [ TIMES THEN SMC SMALLER RP PLUS MINUS EQUALS EQSMALL EQBIG EOF ELSE DONE DIV DIFFERS BIGGER ]
+expr -> expr . BIGGER expr [ TIMES THEN SMC SMALLER RP PLUS MINUS EQUALS EQSMALL EQBIG EOF ELSE DONE DIV DIFFERS BIGGER ]
+expr -> expr . SMALLER expr [ TIMES THEN SMC SMALLER RP PLUS MINUS EQUALS EQSMALL EQBIG EOF ELSE DONE DIV DIFFERS BIGGER ]
+expr -> expr . EQSMALL expr [ TIMES THEN SMC SMALLER RP PLUS MINUS EQUALS EQSMALL EQBIG EOF ELSE DONE DIV DIFFERS BIGGER ]
+expr -> expr . EQBIG expr [ TIMES THEN SMC SMALLER RP PLUS MINUS EQUALS EQSMALL EQBIG EOF ELSE DONE DIV DIFFERS BIGGER ]
+expr -> expr . EQUALS expr [ TIMES THEN SMC SMALLER RP PLUS MINUS EQUALS EQSMALL EQBIG EOF ELSE DONE DIV DIFFERS BIGGER ]
+expr -> expr . DIFFERS expr [ TIMES THEN SMC SMALLER RP PLUS MINUS EQUALS EQSMALL EQBIG EOF ELSE DONE DIV DIFFERS BIGGER ]
+-- On TIMES shift to state 12
+-- On DIV shift to state 19
+-- On THEN reduce production expr -> expr MINUS expr 
+-- On SMC reduce production expr -> expr MINUS expr 
+-- On SMALLER reduce production expr -> expr MINUS expr 
+-- On RP reduce production expr -> expr MINUS expr 
+-- On PLUS reduce production expr -> expr MINUS expr 
+-- On MINUS reduce production expr -> expr MINUS expr 
+-- On EQUALS reduce production expr -> expr MINUS expr 
+-- On EQSMALL reduce production expr -> expr MINUS expr 
+-- On EQBIG reduce production expr -> expr MINUS expr 
+-- On EOF reduce production expr -> expr MINUS expr 
+-- On ELSE reduce production expr -> expr MINUS expr 
+-- On DONE reduce production expr -> expr MINUS expr 
+-- On DIFFERS reduce production expr -> expr MINUS expr 
+-- On BIGGER reduce production expr -> expr MINUS expr 
+
+State 23:
+expr -> LP expr RP . [ TIMES THEN SMC SMALLER RP PLUS MINUS EQUALS EQSMALL EQBIG EOF ELSE DONE DIV DIFFERS BIGGER ]
+-- On TIMES reduce production expr -> LP expr RP 
+-- On THEN reduce production expr -> LP expr RP 
+-- On SMC reduce production expr -> LP expr RP 
+-- On SMALLER reduce production expr -> LP expr RP 
+-- On RP reduce production expr -> LP expr RP 
+-- On PLUS reduce production expr -> LP expr RP 
+-- On MINUS reduce production expr -> LP expr RP 
+-- On EQUALS reduce production expr -> LP expr RP 
+-- On EQSMALL reduce production expr -> LP expr RP 
+-- On EQBIG reduce production expr -> LP expr RP 
+-- On EOF reduce production expr -> LP expr RP 
+-- On ELSE reduce production expr -> LP expr RP 
+-- On DONE reduce production expr -> LP expr RP 
+-- On DIV reduce production expr -> LP expr RP 
+-- On DIFFERS reduce production expr -> LP expr RP 
+-- On BIGGER reduce production expr -> LP expr RP 
+
+State 24:
+expr -> expr EQUALS . expr [ TIMES THEN SMC SMALLER RP PLUS MINUS EQUALS EQSMALL EQBIG EOF ELSE DONE DIV DIFFERS BIGGER ]
+-- On TRUE shift to state 4
+-- On MINUS shift to state 5
+-- On LP shift to state 6
+-- On INT shift to state 7
+-- On IDENT shift to state 8
+-- On FLOAT shift to state 9
+-- On FALSE shift to state 10
+-- On expr shift to state 25
+-- On cst shift to state 14
+
+State 25:
+expr -> expr . PLUS expr [ TIMES THEN SMC SMALLER RP PLUS MINUS EQUALS EQSMALL EQBIG EOF ELSE DONE DIV DIFFERS BIGGER ]
+expr -> expr . MINUS expr [ TIMES THEN SMC SMALLER RP PLUS MINUS EQUALS EQSMALL EQBIG EOF ELSE DONE DIV DIFFERS BIGGER ]
+expr -> expr . TIMES expr [ TIMES THEN SMC SMALLER RP PLUS MINUS EQUALS EQSMALL EQBIG EOF ELSE DONE DIV DIFFERS BIGGER ]
+expr -> expr . DIV expr [ TIMES THEN SMC SMALLER RP PLUS MINUS EQUALS EQSMALL EQBIG EOF ELSE DONE DIV DIFFERS BIGGER ]
+expr -> expr . BIGGER expr [ TIMES THEN SMC SMALLER RP PLUS MINUS EQUALS EQSMALL EQBIG EOF ELSE DONE DIV DIFFERS BIGGER ]
+expr -> expr . SMALLER expr [ TIMES THEN SMC SMALLER RP PLUS MINUS EQUALS EQSMALL EQBIG EOF ELSE DONE DIV DIFFERS BIGGER ]
+expr -> expr . EQSMALL expr [ TIMES THEN SMC SMALLER RP PLUS MINUS EQUALS EQSMALL EQBIG EOF ELSE DONE DIV DIFFERS BIGGER ]
+expr -> expr . EQBIG expr [ TIMES THEN SMC SMALLER RP PLUS MINUS EQUALS EQSMALL EQBIG EOF ELSE DONE DIV DIFFERS BIGGER ]
+expr -> expr . EQUALS expr [ TIMES THEN SMC SMALLER RP PLUS MINUS EQUALS EQSMALL EQBIG EOF ELSE DONE DIV DIFFERS BIGGER ]
+expr -> expr EQUALS expr . [ TIMES THEN SMC SMALLER RP PLUS MINUS EQUALS EQSMALL EQBIG EOF ELSE DONE DIV DIFFERS BIGGER ]
+expr -> expr . DIFFERS expr [ TIMES THEN SMC SMALLER RP PLUS MINUS EQUALS EQSMALL EQBIG EOF ELSE DONE DIV DIFFERS BIGGER ]
+-- On TIMES shift to state 12
+-- On PLUS shift to state 17
+-- On MINUS shift to state 21
+-- On DIV shift to state 19
+-- On THEN reduce production expr -> expr EQUALS expr 
+-- On SMC reduce production expr -> expr EQUALS expr 
+-- On SMALLER reduce production expr -> expr EQUALS expr 
+-- On RP reduce production expr -> expr EQUALS expr 
+-- On EQUALS reduce production expr -> expr EQUALS expr 
+-- On EQSMALL reduce production expr -> expr EQUALS expr 
+-- On EQBIG reduce production expr -> expr EQUALS expr 
+-- On EOF reduce production expr -> expr EQUALS expr 
+-- On ELSE reduce production expr -> expr EQUALS expr 
+-- On DONE reduce production expr -> expr EQUALS expr 
+-- On DIFFERS reduce production expr -> expr EQUALS expr 
+-- On BIGGER reduce production expr -> expr EQUALS expr 
+
+State 26:
+expr -> expr EQSMALL . expr [ TIMES THEN SMC SMALLER RP PLUS MINUS EQUALS EQSMALL EQBIG EOF ELSE DONE DIV DIFFERS BIGGER ]
+-- On TRUE shift to state 4
+-- On MINUS shift to state 5
+-- On LP shift to state 6
+-- On INT shift to state 7
+-- On IDENT shift to state 8
+-- On FLOAT shift to state 9
+-- On FALSE shift to state 10
+-- On expr shift to state 27
+-- On cst shift to state 14
+
+State 27:
+expr -> expr . PLUS expr [ TIMES THEN SMC SMALLER RP PLUS MINUS EQUALS EQSMALL EQBIG EOF ELSE DONE DIV DIFFERS BIGGER ]
+expr -> expr . MINUS expr [ TIMES THEN SMC SMALLER RP PLUS MINUS EQUALS EQSMALL EQBIG EOF ELSE DONE DIV DIFFERS BIGGER ]
+expr -> expr . TIMES expr [ TIMES THEN SMC SMALLER RP PLUS MINUS EQUALS EQSMALL EQBIG EOF ELSE DONE DIV DIFFERS BIGGER ]
+expr -> expr . DIV expr [ TIMES THEN SMC SMALLER RP PLUS MINUS EQUALS EQSMALL EQBIG EOF ELSE DONE DIV DIFFERS BIGGER ]
+expr -> expr . BIGGER expr [ TIMES THEN SMC SMALLER RP PLUS MINUS EQUALS EQSMALL EQBIG EOF ELSE DONE DIV DIFFERS BIGGER ]
+expr -> expr . SMALLER expr [ TIMES THEN SMC SMALLER RP PLUS MINUS EQUALS EQSMALL EQBIG EOF ELSE DONE DIV DIFFERS BIGGER ]
+expr -> expr . EQSMALL expr [ TIMES THEN SMC SMALLER RP PLUS MINUS EQUALS EQSMALL EQBIG EOF ELSE DONE DIV DIFFERS BIGGER ]
+expr -> expr EQSMALL expr . [ TIMES THEN SMC SMALLER RP PLUS MINUS EQUALS EQSMALL EQBIG EOF ELSE DONE DIV DIFFERS BIGGER ]
+expr -> expr . EQBIG expr [ TIMES THEN SMC SMALLER RP PLUS MINUS EQUALS EQSMALL EQBIG EOF ELSE DONE DIV DIFFERS BIGGER ]
+expr -> expr . EQUALS expr [ TIMES THEN SMC SMALLER RP PLUS MINUS EQUALS EQSMALL EQBIG EOF ELSE DONE DIV DIFFERS BIGGER ]
+expr -> expr . DIFFERS expr [ TIMES THEN SMC SMALLER RP PLUS MINUS EQUALS EQSMALL EQBIG EOF ELSE DONE DIV DIFFERS BIGGER ]
+-- On TIMES shift to state 12
+-- On PLUS shift to state 17
+-- On MINUS shift to state 21
+-- On DIV shift to state 19
+-- On THEN reduce production expr -> expr EQSMALL expr 
+-- On SMC reduce production expr -> expr EQSMALL expr 
+-- On SMALLER reduce production expr -> expr EQSMALL expr 
+-- On RP reduce production expr -> expr EQSMALL expr 
+-- On EQUALS reduce production expr -> expr EQSMALL expr 
+-- On EQSMALL reduce production expr -> expr EQSMALL expr 
+-- On EQBIG reduce production expr -> expr EQSMALL expr 
+-- On EOF reduce production expr -> expr EQSMALL expr 
+-- On ELSE reduce production expr -> expr EQSMALL expr 
+-- On DONE reduce production expr -> expr EQSMALL expr 
+-- On DIFFERS reduce production expr -> expr EQSMALL expr 
+-- On BIGGER reduce production expr -> expr EQSMALL expr 
+
+State 28:
+expr -> expr EQBIG . expr [ TIMES THEN SMC SMALLER RP PLUS MINUS EQUALS EQSMALL EQBIG EOF ELSE DONE DIV DIFFERS BIGGER ]
+-- On TRUE shift to state 4
+-- On MINUS shift to state 5
+-- On LP shift to state 6
+-- On INT shift to state 7
+-- On IDENT shift to state 8
+-- On FLOAT shift to state 9
+-- On FALSE shift to state 10
+-- On expr shift to state 29
+-- On cst shift to state 14
+
+State 29:
+expr -> expr . PLUS expr [ TIMES THEN SMC SMALLER RP PLUS MINUS EQUALS EQSMALL EQBIG EOF ELSE DONE DIV DIFFERS BIGGER ]
+expr -> expr . MINUS expr [ TIMES THEN SMC SMALLER RP PLUS MINUS EQUALS EQSMALL EQBIG EOF ELSE DONE DIV DIFFERS BIGGER ]
+expr -> expr . TIMES expr [ TIMES THEN SMC SMALLER RP PLUS MINUS EQUALS EQSMALL EQBIG EOF ELSE DONE DIV DIFFERS BIGGER ]
+expr -> expr . DIV expr [ TIMES THEN SMC SMALLER RP PLUS MINUS EQUALS EQSMALL EQBIG EOF ELSE DONE DIV DIFFERS BIGGER ]
+expr -> expr . BIGGER expr [ TIMES THEN SMC SMALLER RP PLUS MINUS EQUALS EQSMALL EQBIG EOF ELSE DONE DIV DIFFERS BIGGER ]
+expr -> expr . SMALLER expr [ TIMES THEN SMC SMALLER RP PLUS MINUS EQUALS EQSMALL EQBIG EOF ELSE DONE DIV DIFFERS BIGGER ]
+expr -> expr . EQSMALL expr [ TIMES THEN SMC SMALLER RP PLUS MINUS EQUALS EQSMALL EQBIG EOF ELSE DONE DIV DIFFERS BIGGER ]
+expr -> expr . EQBIG expr [ TIMES THEN SMC SMALLER RP PLUS MINUS EQUALS EQSMALL EQBIG EOF ELSE DONE DIV DIFFERS BIGGER ]
+expr -> expr EQBIG expr . [ TIMES THEN SMC SMALLER RP PLUS MINUS EQUALS EQSMALL EQBIG EOF ELSE DONE DIV DIFFERS BIGGER ]
+expr -> expr . EQUALS expr [ TIMES THEN SMC SMALLER RP PLUS MINUS EQUALS EQSMALL EQBIG EOF ELSE DONE DIV DIFFERS BIGGER ]
+expr -> expr . DIFFERS expr [ TIMES THEN SMC SMALLER RP PLUS MINUS EQUALS EQSMALL EQBIG EOF ELSE DONE DIV DIFFERS BIGGER ]
+-- On TIMES shift to state 12
+-- On PLUS shift to state 17
+-- On MINUS shift to state 21
+-- On DIV shift to state 19
+-- On THEN reduce production expr -> expr EQBIG expr 
+-- On SMC reduce production expr -> expr EQBIG expr 
+-- On SMALLER reduce production expr -> expr EQBIG expr 
+-- On RP reduce production expr -> expr EQBIG expr 
+-- On EQUALS reduce production expr -> expr EQBIG expr 
+-- On EQSMALL reduce production expr -> expr EQBIG expr 
+-- On EQBIG reduce production expr -> expr EQBIG expr 
+-- On EOF reduce production expr -> expr EQBIG expr 
+-- On ELSE reduce production expr -> expr EQBIG expr 
+-- On DONE reduce production expr -> expr EQBIG expr 
+-- On DIFFERS reduce production expr -> expr EQBIG expr 
+-- On BIGGER reduce production expr -> expr EQBIG expr 
+
+State 30:
+expr -> expr DIFFERS . expr [ TIMES THEN SMC SMALLER RP PLUS MINUS EQUALS EQSMALL EQBIG EOF ELSE DONE DIV DIFFERS BIGGER ]
+-- On TRUE shift to state 4
+-- On MINUS shift to state 5
+-- On LP shift to state 6
+-- On INT shift to state 7
+-- On IDENT shift to state 8
+-- On FLOAT shift to state 9
+-- On FALSE shift to state 10
+-- On expr shift to state 31
+-- On cst shift to state 14
+
+State 31:
+expr -> expr . PLUS expr [ TIMES THEN SMC SMALLER RP PLUS MINUS EQUALS EQSMALL EQBIG EOF ELSE DONE DIV DIFFERS BIGGER ]
+expr -> expr . MINUS expr [ TIMES THEN SMC SMALLER RP PLUS MINUS EQUALS EQSMALL EQBIG EOF ELSE DONE DIV DIFFERS BIGGER ]
+expr -> expr . TIMES expr [ TIMES THEN SMC SMALLER RP PLUS MINUS EQUALS EQSMALL EQBIG EOF ELSE DONE DIV DIFFERS BIGGER ]
+expr -> expr . DIV expr [ TIMES THEN SMC SMALLER RP PLUS MINUS EQUALS EQSMALL EQBIG EOF ELSE DONE DIV DIFFERS BIGGER ]
+expr -> expr . BIGGER expr [ TIMES THEN SMC SMALLER RP PLUS MINUS EQUALS EQSMALL EQBIG EOF ELSE DONE DIV DIFFERS BIGGER ]
+expr -> expr . SMALLER expr [ TIMES THEN SMC SMALLER RP PLUS MINUS EQUALS EQSMALL EQBIG EOF ELSE DONE DIV DIFFERS BIGGER ]
+expr -> expr . EQSMALL expr [ TIMES THEN SMC SMALLER RP PLUS MINUS EQUALS EQSMALL EQBIG EOF ELSE DONE DIV DIFFERS BIGGER ]
+expr -> expr . EQBIG expr [ TIMES THEN SMC SMALLER RP PLUS MINUS EQUALS EQSMALL EQBIG EOF ELSE DONE DIV DIFFERS BIGGER ]
+expr -> expr . EQUALS expr [ TIMES THEN SMC SMALLER RP PLUS MINUS EQUALS EQSMALL EQBIG EOF ELSE DONE DIV DIFFERS BIGGER ]
+expr -> expr . DIFFERS expr [ TIMES THEN SMC SMALLER RP PLUS MINUS EQUALS EQSMALL EQBIG EOF ELSE DONE DIV DIFFERS BIGGER ]
+expr -> expr DIFFERS expr . [ TIMES THEN SMC SMALLER RP PLUS MINUS EQUALS EQSMALL EQBIG EOF ELSE DONE DIV DIFFERS BIGGER ]
+-- On TIMES shift to state 12
+-- On PLUS shift to state 17
+-- On MINUS shift to state 21
+-- On DIV shift to state 19
+-- On THEN reduce production expr -> expr DIFFERS expr 
+-- On SMC reduce production expr -> expr DIFFERS expr 
+-- On SMALLER reduce production expr -> expr DIFFERS expr 
+-- On RP reduce production expr -> expr DIFFERS expr 
+-- On EQUALS reduce production expr -> expr DIFFERS expr 
+-- On EQSMALL reduce production expr -> expr DIFFERS expr 
+-- On EQBIG reduce production expr -> expr DIFFERS expr 
+-- On EOF reduce production expr -> expr DIFFERS expr 
+-- On ELSE reduce production expr -> expr DIFFERS expr 
+-- On DONE reduce production expr -> expr DIFFERS expr 
+-- On DIFFERS reduce production expr -> expr DIFFERS expr 
+-- On BIGGER reduce production expr -> expr DIFFERS expr 
+
+State 32:
+expr -> expr BIGGER . expr [ TIMES THEN SMC SMALLER RP PLUS MINUS EQUALS EQSMALL EQBIG EOF ELSE DONE DIV DIFFERS BIGGER ]
+-- On TRUE shift to state 4
+-- On MINUS shift to state 5
+-- On LP shift to state 6
+-- On INT shift to state 7
+-- On IDENT shift to state 8
+-- On FLOAT shift to state 9
+-- On FALSE shift to state 10
+-- On expr shift to state 33
+-- On cst shift to state 14
+
+State 33:
+expr -> expr . PLUS expr [ TIMES THEN SMC SMALLER RP PLUS MINUS EQUALS EQSMALL EQBIG EOF ELSE DONE DIV DIFFERS BIGGER ]
+expr -> expr . MINUS expr [ TIMES THEN SMC SMALLER RP PLUS MINUS EQUALS EQSMALL EQBIG EOF ELSE DONE DIV DIFFERS BIGGER ]
+expr -> expr . TIMES expr [ TIMES THEN SMC SMALLER RP PLUS MINUS EQUALS EQSMALL EQBIG EOF ELSE DONE DIV DIFFERS BIGGER ]
+expr -> expr . DIV expr [ TIMES THEN SMC SMALLER RP PLUS MINUS EQUALS EQSMALL EQBIG EOF ELSE DONE DIV DIFFERS BIGGER ]
+expr -> expr . BIGGER expr [ TIMES THEN SMC SMALLER RP PLUS MINUS EQUALS EQSMALL EQBIG EOF ELSE DONE DIV DIFFERS BIGGER ]
+expr -> expr BIGGER expr . [ TIMES THEN SMC SMALLER RP PLUS MINUS EQUALS EQSMALL EQBIG EOF ELSE DONE DIV DIFFERS BIGGER ]
+expr -> expr . SMALLER expr [ TIMES THEN SMC SMALLER RP PLUS MINUS EQUALS EQSMALL EQBIG EOF ELSE DONE DIV DIFFERS BIGGER ]
+expr -> expr . EQSMALL expr [ TIMES THEN SMC SMALLER RP PLUS MINUS EQUALS EQSMALL EQBIG EOF ELSE DONE DIV DIFFERS BIGGER ]
+expr -> expr . EQBIG expr [ TIMES THEN SMC SMALLER RP PLUS MINUS EQUALS EQSMALL EQBIG EOF ELSE DONE DIV DIFFERS BIGGER ]
+expr -> expr . EQUALS expr [ TIMES THEN SMC SMALLER RP PLUS MINUS EQUALS EQSMALL EQBIG EOF ELSE DONE DIV DIFFERS BIGGER ]
+expr -> expr . DIFFERS expr [ TIMES THEN SMC SMALLER RP PLUS MINUS EQUALS EQSMALL EQBIG EOF ELSE DONE DIV DIFFERS BIGGER ]
+-- On TIMES shift to state 12
+-- On PLUS shift to state 17
+-- On MINUS shift to state 21
+-- On DIV shift to state 19
+-- On THEN reduce production expr -> expr BIGGER expr 
+-- On SMC reduce production expr -> expr BIGGER expr 
+-- On SMALLER reduce production expr -> expr BIGGER expr 
+-- On RP reduce production expr -> expr BIGGER expr 
+-- On EQUALS reduce production expr -> expr BIGGER expr 
+-- On EQSMALL reduce production expr -> expr BIGGER expr 
+-- On EQBIG reduce production expr -> expr BIGGER expr 
+-- On EOF reduce production expr -> expr BIGGER expr 
+-- On ELSE reduce production expr -> expr BIGGER expr 
+-- On DONE reduce production expr -> expr BIGGER expr 
+-- On DIFFERS reduce production expr -> expr BIGGER expr 
+-- On BIGGER reduce production expr -> expr BIGGER expr 
+
+State 34:
+expr -> expr . PLUS expr [ TIMES THEN SMC SMALLER RP PLUS MINUS EQUALS EQSMALL EQBIG EOF ELSE DONE DIV DIFFERS BIGGER ]
+expr -> expr . MINUS expr [ TIMES THEN SMC SMALLER RP PLUS MINUS EQUALS EQSMALL EQBIG EOF ELSE DONE DIV DIFFERS BIGGER ]
+expr -> expr . TIMES expr [ TIMES THEN SMC SMALLER RP PLUS MINUS EQUALS EQSMALL EQBIG EOF ELSE DONE DIV DIFFERS BIGGER ]
+expr -> expr . DIV expr [ TIMES THEN SMC SMALLER RP PLUS MINUS EQUALS EQSMALL EQBIG EOF ELSE DONE DIV DIFFERS BIGGER ]
+expr -> expr . BIGGER expr [ TIMES THEN SMC SMALLER RP PLUS MINUS EQUALS EQSMALL EQBIG EOF ELSE DONE DIV DIFFERS BIGGER ]
+expr -> expr . SMALLER expr [ TIMES THEN SMC SMALLER RP PLUS MINUS EQUALS EQSMALL EQBIG EOF ELSE DONE DIV DIFFERS BIGGER ]
+expr -> expr . EQSMALL expr [ TIMES THEN SMC SMALLER RP PLUS MINUS EQUALS EQSMALL EQBIG EOF ELSE DONE DIV DIFFERS BIGGER ]
+expr -> expr . EQBIG expr [ TIMES THEN SMC SMALLER RP PLUS MINUS EQUALS EQSMALL EQBIG EOF ELSE DONE DIV DIFFERS BIGGER ]
+expr -> expr . EQUALS expr [ TIMES THEN SMC SMALLER RP PLUS MINUS EQUALS EQSMALL EQBIG EOF ELSE DONE DIV DIFFERS BIGGER ]
+expr -> expr . DIFFERS expr [ TIMES THEN SMC SMALLER RP PLUS MINUS EQUALS EQSMALL EQBIG EOF ELSE DONE DIV DIFFERS BIGGER ]
+expr -> MINUS expr . [ TIMES THEN SMC SMALLER RP PLUS MINUS EQUALS EQSMALL EQBIG EOF ELSE DONE DIV DIFFERS BIGGER ]
+-- On TIMES reduce production expr -> MINUS expr 
+-- On THEN reduce production expr -> MINUS expr 
+-- On SMC reduce production expr -> MINUS expr 
+-- On SMALLER reduce production expr -> MINUS expr 
+-- On RP reduce production expr -> MINUS expr 
+-- On PLUS reduce production expr -> MINUS expr 
+-- On MINUS reduce production expr -> MINUS expr 
+-- On EQUALS reduce production expr -> MINUS expr 
+-- On EQSMALL reduce production expr -> MINUS expr 
+-- On EQBIG reduce production expr -> MINUS expr 
+-- On EOF reduce production expr -> MINUS expr 
+-- On ELSE reduce production expr -> MINUS expr 
+-- On DONE reduce production expr -> MINUS expr 
+-- On DIV reduce production expr -> MINUS expr 
+-- On DIFFERS reduce production expr -> MINUS expr 
+-- On BIGGER reduce production expr -> MINUS expr 
+
+State 35:
+expr -> expr . PLUS expr [ TIMES SMC SMALLER PLUS MINUS EQUALS EQSMALL EQBIG EOF ELSE DONE DIV DIFFERS BIGGER ]
+expr -> expr . MINUS expr [ TIMES SMC SMALLER PLUS MINUS EQUALS EQSMALL EQBIG EOF ELSE DONE DIV DIFFERS BIGGER ]
+expr -> expr . TIMES expr [ TIMES SMC SMALLER PLUS MINUS EQUALS EQSMALL EQBIG EOF ELSE DONE DIV DIFFERS BIGGER ]
+expr -> expr . DIV expr [ TIMES SMC SMALLER PLUS MINUS EQUALS EQSMALL EQBIG EOF ELSE DONE DIV DIFFERS BIGGER ]
+expr -> expr . BIGGER expr [ TIMES SMC SMALLER PLUS MINUS EQUALS EQSMALL EQBIG EOF ELSE DONE DIV DIFFERS BIGGER ]
+expr -> expr . SMALLER expr [ TIMES SMC SMALLER PLUS MINUS EQUALS EQSMALL EQBIG EOF ELSE DONE DIV DIFFERS BIGGER ]
+expr -> expr . EQSMALL expr [ TIMES SMC SMALLER PLUS MINUS EQUALS EQSMALL EQBIG EOF ELSE DONE DIV DIFFERS BIGGER ]
+expr -> expr . EQBIG expr [ TIMES SMC SMALLER PLUS MINUS EQUALS EQSMALL EQBIG EOF ELSE DONE DIV DIFFERS BIGGER ]
+expr -> expr . EQUALS expr [ TIMES SMC SMALLER PLUS MINUS EQUALS EQSMALL EQBIG EOF ELSE DONE DIV DIFFERS BIGGER ]
+expr -> expr . DIFFERS expr [ TIMES SMC SMALLER PLUS MINUS EQUALS EQSMALL EQBIG EOF ELSE DONE DIV DIFFERS BIGGER ]
+stmt -> SET IDENT EQ expr . [ SMC EOF ELSE DONE ]
+-- On TIMES shift to state 12
+-- On SMALLER shift to state 15
+-- On PLUS shift to state 17
+-- On MINUS shift to state 21
+-- On EQUALS shift to state 24
+-- On EQSMALL shift to state 26
+-- On EQBIG shift to state 28
+-- On DIV shift to state 19
+-- On DIFFERS shift to state 30
+-- On BIGGER shift to state 32
+-- On SMC reduce production stmt -> SET IDENT EQ expr 
+-- On EOF reduce production stmt -> SET IDENT EQ expr 
+-- On ELSE reduce production stmt -> SET IDENT EQ expr 
+-- On DONE reduce production stmt -> SET IDENT EQ expr 
+
+State 36:
+stmt -> PRINT . expr [ SMC EOF ELSE DONE ]
+-- On TRUE shift to state 4
+-- On MINUS shift to state 5
+-- On LP shift to state 6
+-- On INT shift to state 7
+-- On IDENT shift to state 8
+-- On FLOAT shift to state 9
+-- On FALSE shift to state 10
+-- On expr shift to state 37
+-- On cst shift to state 14
+
+State 37:
+expr -> expr . PLUS expr [ TIMES SMC SMALLER PLUS MINUS EQUALS EQSMALL EQBIG EOF ELSE DONE DIV DIFFERS BIGGER ]
+expr -> expr . MINUS expr [ TIMES SMC SMALLER PLUS MINUS EQUALS EQSMALL EQBIG EOF ELSE DONE DIV DIFFERS BIGGER ]
+expr -> expr . TIMES expr [ TIMES SMC SMALLER PLUS MINUS EQUALS EQSMALL EQBIG EOF ELSE DONE DIV DIFFERS BIGGER ]
+expr -> expr . DIV expr [ TIMES SMC SMALLER PLUS MINUS EQUALS EQSMALL EQBIG EOF ELSE DONE DIV DIFFERS BIGGER ]
+expr -> expr . BIGGER expr [ TIMES SMC SMALLER PLUS MINUS EQUALS EQSMALL EQBIG EOF ELSE DONE DIV DIFFERS BIGGER ]
+expr -> expr . SMALLER expr [ TIMES SMC SMALLER PLUS MINUS EQUALS EQSMALL EQBIG EOF ELSE DONE DIV DIFFERS BIGGER ]
+expr -> expr . EQSMALL expr [ TIMES SMC SMALLER PLUS MINUS EQUALS EQSMALL EQBIG EOF ELSE DONE DIV DIFFERS BIGGER ]
+expr -> expr . EQBIG expr [ TIMES SMC SMALLER PLUS MINUS EQUALS EQSMALL EQBIG EOF ELSE DONE DIV DIFFERS BIGGER ]
+expr -> expr . EQUALS expr [ TIMES SMC SMALLER PLUS MINUS EQUALS EQSMALL EQBIG EOF ELSE DONE DIV DIFFERS BIGGER ]
+expr -> expr . DIFFERS expr [ TIMES SMC SMALLER PLUS MINUS EQUALS EQSMALL EQBIG EOF ELSE DONE DIV DIFFERS BIGGER ]
+stmt -> PRINT expr . [ SMC EOF ELSE DONE ]
+-- On TIMES shift to state 12
+-- On SMALLER shift to state 15
+-- On PLUS shift to state 17
+-- On MINUS shift to state 21
+-- On EQUALS shift to state 24
+-- On EQSMALL shift to state 26
+-- On EQBIG shift to state 28
+-- On DIV shift to state 19
+-- On DIFFERS shift to state 30
+-- On BIGGER shift to state 32
+-- On SMC reduce production stmt -> PRINT expr 
+-- On EOF reduce production stmt -> PRINT expr 
+-- On ELSE reduce production stmt -> PRINT expr 
+-- On DONE reduce production stmt -> PRINT expr 
+
+State 38:
+stmt -> IF . expr THEN stmts DONE [ SMC EOF ELSE DONE ]
+stmt -> IF . expr THEN stmts ELSE stmts DONE [ SMC EOF ELSE DONE ]
+-- On TRUE shift to state 4
+-- On MINUS shift to state 5
+-- On LP shift to state 6
+-- On INT shift to state 7
+-- On IDENT shift to state 8
+-- On FLOAT shift to state 9
+-- On FALSE shift to state 10
+-- On expr shift to state 39
+-- On cst shift to state 14
+
+State 39:
+expr -> expr . PLUS expr [ TIMES THEN SMALLER PLUS MINUS EQUALS EQSMALL EQBIG DIV DIFFERS BIGGER ]
+expr -> expr . MINUS expr [ TIMES THEN SMALLER PLUS MINUS EQUALS EQSMALL EQBIG DIV DIFFERS BIGGER ]
+expr -> expr . TIMES expr [ TIMES THEN SMALLER PLUS MINUS EQUALS EQSMALL EQBIG DIV DIFFERS BIGGER ]
+expr -> expr . DIV expr [ TIMES THEN SMALLER PLUS MINUS EQUALS EQSMALL EQBIG DIV DIFFERS BIGGER ]
+expr -> expr . BIGGER expr [ TIMES THEN SMALLER PLUS MINUS EQUALS EQSMALL EQBIG DIV DIFFERS BIGGER ]
+expr -> expr . SMALLER expr [ TIMES THEN SMALLER PLUS MINUS EQUALS EQSMALL EQBIG DIV DIFFERS BIGGER ]
+expr -> expr . EQSMALL expr [ TIMES THEN SMALLER PLUS MINUS EQUALS EQSMALL EQBIG DIV DIFFERS BIGGER ]
+expr -> expr . EQBIG expr [ TIMES THEN SMALLER PLUS MINUS EQUALS EQSMALL EQBIG DIV DIFFERS BIGGER ]
+expr -> expr . EQUALS expr [ TIMES THEN SMALLER PLUS MINUS EQUALS EQSMALL EQBIG DIV DIFFERS BIGGER ]
+expr -> expr . DIFFERS expr [ TIMES THEN SMALLER PLUS MINUS EQUALS EQSMALL EQBIG DIV DIFFERS BIGGER ]
+stmt -> IF expr . THEN stmts DONE [ SMC EOF ELSE DONE ]
+stmt -> IF expr . THEN stmts ELSE stmts DONE [ SMC EOF ELSE DONE ]
+-- On TIMES shift to state 12
+-- On THEN shift to state 40
+-- On SMALLER shift to state 15
+-- On PLUS shift to state 17
+-- On MINUS shift to state 21
+-- On EQUALS shift to state 24
+-- On EQSMALL shift to state 26
+-- On EQBIG shift to state 28
+-- On DIV shift to state 19
+-- On DIFFERS shift to state 30
+-- On BIGGER shift to state 32
+
+State 40:
+stmt -> IF expr THEN . stmts DONE [ SMC EOF ELSE DONE ]
+stmt -> IF expr THEN . stmts ELSE stmts DONE [ SMC EOF ELSE DONE ]
+-- On SET shift to state 1
+-- On PRINT shift to state 36
+-- On IF shift to state 38
+-- On stmts shift to state 41
+-- On stmt shift to state 47
+
+State 41:
+stmt -> IF expr THEN stmts . DONE [ SMC EOF ELSE DONE ]
+stmt -> IF expr THEN stmts . ELSE stmts DONE [ SMC EOF ELSE DONE ]
+stmts -> stmts . SMC stmt [ SMC ELSE DONE ]
+-- On SMC shift to state 42
+-- On ELSE shift to state 44
+-- On DONE shift to state 48
+
+State 42:
+stmts -> stmts SMC . stmt [ SMC EOF ELSE DONE ]
+-- On SET shift to state 1
+-- On PRINT shift to state 36
+-- On IF shift to state 38
+-- On stmt shift to state 43
+
+State 43:
+stmts -> stmts SMC stmt . [ SMC EOF ELSE DONE ]
+-- On SMC reduce production stmts -> stmts SMC stmt 
+-- On EOF reduce production stmts -> stmts SMC stmt 
+-- On ELSE reduce production stmts -> stmts SMC stmt 
+-- On DONE reduce production stmts -> stmts SMC stmt 
+
+State 44:
+stmt -> IF expr THEN stmts ELSE . stmts DONE [ SMC EOF ELSE DONE ]
+-- On SET shift to state 1
+-- On PRINT shift to state 36
+-- On IF shift to state 38
+-- On stmts shift to state 45
+-- On stmt shift to state 47
+
+State 45:
+stmt -> IF expr THEN stmts ELSE stmts . DONE [ SMC EOF ELSE DONE ]
+stmts -> stmts . SMC stmt [ SMC DONE ]
+-- On SMC shift to state 42
+-- On DONE shift to state 46
+
+State 46:
+stmt -> IF expr THEN stmts ELSE stmts DONE . [ SMC EOF ELSE DONE ]
+-- On SMC reduce production stmt -> IF expr THEN stmts ELSE stmts DONE 
+-- On EOF reduce production stmt -> IF expr THEN stmts ELSE stmts DONE 
+-- On ELSE reduce production stmt -> IF expr THEN stmts ELSE stmts DONE 
+-- On DONE reduce production stmt -> IF expr THEN stmts ELSE stmts DONE 
+
+State 47:
+stmts -> stmt . [ SMC EOF ELSE DONE ]
+-- On SMC reduce production stmts -> stmt 
+-- On EOF reduce production stmts -> stmt 
+-- On ELSE reduce production stmts -> stmt 
+-- On DONE reduce production stmts -> stmt 
+
+State 48:
+stmt -> IF expr THEN stmts DONE . [ SMC EOF ELSE DONE ]
+-- On SMC reduce production stmt -> IF expr THEN stmts DONE 
+-- On EOF reduce production stmt -> IF expr THEN stmts DONE 
+-- On ELSE reduce production stmt -> IF expr THEN stmts DONE 
+-- On DONE reduce production stmt -> IF expr THEN stmts DONE 
+
+State 49:
+prog -> stmts . EOF [ # ]
+stmts -> stmts . SMC stmt [ SMC EOF ]
+-- On SMC shift to state 42
+-- On EOF shift to state 50
+
+State 50:
+prog -> stmts EOF . [ # ]
+-- On # reduce production prog -> stmts EOF 
+
+State 51:
+prog' -> prog . [ # ]
+-- On # accept prog
+
